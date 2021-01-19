@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h2><%= "#{@restaurant.name} "%></h2>
+      <p><%= "Address: #{@restaurant.address}" %></p>
+      <p><%= "Phone: #{@restaurant.phone_number}" %></p>
+      <p><%= "Food country: #{@restaurant.category}" %></p>
+      <p><%= link_to "Edit the restaurant", edit_restaurant_path %></p>
+      <br>
+      <br>
+      <h5>Reviews</h5>
+      <ul class="list-group">
+        <% @restaurant.reviews.each do |review| %>
+          <li class="list-group-item"><%= "Commentary: #{review.content} #{review.rating} / 5" %>, <%= link_to "Remove", review_path(review), method: :delete, data: { confirm: "Are you sure?" } %></li>
+        <% end %>
+      </ul>
+      <p><%= link_to "+ Add a review",  new_restaurant_review_path(@restaurant)%></p>
+      <br>
+      <br>
+      <p><%= link_to "<- Back", restaurants_path %></p>
+    </div>
+  </div>
+</div>
